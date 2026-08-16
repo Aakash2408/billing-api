@@ -4,14 +4,12 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  phoneNumber: string;
   createdAt: Date;
 }
 
 export interface CreateUserRequest {
   name: string;
   email: string;
-  phoneNumber: string;
 }
 
 export class UserClient {
@@ -23,8 +21,8 @@ export class UserClient {
     this.baseUrl = baseUrl;
   }
 
-  async createUser(name: string, email: string, phoneNumber: string): Promise<User> {
-    const request: CreateUserRequest = { name, email, phoneNumber };
+  async createUser(name: string, email: string: string): Promise<User> {
+    const request: CreateUserRequest = { name, email };
     const response = await this.http.post<User>(`${this.baseUrl}/users`, request);
     return response.data;
   }
