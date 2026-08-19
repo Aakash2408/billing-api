@@ -16,7 +16,6 @@ import { User } from "./types";
 export interface CreateUserRequest {
   name: string;
   email: string;
-  phoneNumber: string;
 }
 
 interface HttpResponse<T> {
@@ -27,7 +26,7 @@ async function post<T>(url: string, body: unknown): Promise<HttpResponse<T>> {
   const response = await fetch(url, {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify(body),
+    body: JSON.stringify(body)
   });
   return { data: (await response.json()) as T };
 }
@@ -37,8 +36,7 @@ export class UserClient {
 
   async createUser(
     name: string,
-    email: string,
-    phoneNumber: string,
+    email: string
   ): Promise<User> {
     const request: CreateUserRequest = { name, email, phoneNumber };
     const response = await post<User>(`${this.baseUrl}/users`, request);
