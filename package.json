@@ -1,0 +1,9 @@
+{
+  "name": "billing-api",
+  "private": true,
+  "description": "Demo consumer for Ripple. A small monorepo: one package Ripple can fix, one it must refuse.",
+  "workspaces": ["packages/*"],
+  "devDependencies": {
+    "typescript": "5.3.3"
+  }
+}
