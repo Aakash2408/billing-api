@@ -7,7 +7,6 @@ import { User } from "./types";
  */
 export interface ContactRow {
   email: string;
-  phoneNumber: string;
 }
 
 /**
@@ -15,7 +14,7 @@ export interface ContactRow {
  * so this reference is MECHANICALLY removable.
  */
 export function contactLine(user: User): string {
-  return `${user.name} <${user.email}> ${user.phoneNumber}`;
+  return `${user.name} <${user.email}>`;
 }
 
 /**
@@ -26,7 +25,6 @@ export function toCrmPayload(user: User): Record<string, string> {
   return {
     id: user.id,
     email: user.email,
-    phone: user.phoneNumber,
   };
 }
 
@@ -36,6 +34,5 @@ export function toCrmPayload(user: User): Record<string, string> {
 export function toRow(user: User): ContactRow {
   return {
     email: user.email,
-    phoneNumber: user.phoneNumber,
   };
 }
